@@ -11,7 +11,7 @@ package ink.abb.pogo.scraper
 import com.pokegoapi.api.PokemonGo
 import com.pokegoapi.auth.CredentialProvider
 import com.pokegoapi.auth.GoogleAutoCredentialProvider
-import com.pokegoapi.auth.GoogleCredentialProvider
+import com.pokegoapi.auth.GoogleUserCredentialProvider
 import com.pokegoapi.auth.PtcCredentialProvider
 import com.pokegoapi.exceptions.LoginFailedException
 import com.pokegoapi.exceptions.RemoteServerException
@@ -35,7 +35,7 @@ fun getAuth(settings: Settings, http: OkHttpClient): CredentialProvider {
         if (token.isBlank()) {
             GoogleAutoCredentialProvider(http, username, password, time)
         } else {
-            GoogleCredentialProvider(http, token, time)
+            GoogleUserCredentialProvider(http, token, time)
         }
     } else {
         try {
